@@ -1,0 +1,41 @@
+---
+import Layout from '../layouts/Layout.astro';
+import HudNav from '../components/HudNav';
+import HudHero from '../components/HudHero';
+import HudProjects from '../components/HudProjects';
+import HudExperience from '../components/HudExperience';
+import BlueprintFooter from '../components/BlueprintFooter';
+import { personalDetails } from '../data/portfolio';
+
+const title = `${personalDetails.name} - Cyber Portfolio`;
+const description = personalDetails.summary;
+---
+
+<Layout title={title} description={description}>
+  <main class="relative selection:bg-accent selection:text-black overflow-x-hidden bg-[#050505]">
+    <HudNav client:load />
+    
+    <HudHero client:load />
+    
+    <div id="about" class="py-40 px-6 md:px-20 border-t border-white/5 relative z-10 bg-[#050505]">
+       <div class="max-w-7xl mx-auto flex flex-col md:grid md:grid-cols-12 gap-12">
+          <div class="md:col-span-4">
+             <h2 class="text-sm font-mono font-bold uppercase tracking-widest text-accent">System_Overview</h2>
+          </div>
+          <div class="md:col-span-8">
+             <p class="text-3xl md:text-5xl font-display font-medium leading-tight text-white">
+               Dedicated IT Administrator with a robust background in managing data center operations and network infrastructure. Creating high-performance digital architectures with precision and security.
+             </p>
+          </div>
+       </div>
+    </div>
+
+    <HudProjects client:visible />
+    
+    <HudExperience client:visible />
+    
+    <div id="contact">
+      <BlueprintFooter client:visible />
+    </div>
+  </main>
+</Layout>
