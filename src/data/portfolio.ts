@@ -4,9 +4,19 @@
 
 export const personalDetails = {
   name: "Yukizaki",
+<<<<<<< ours
   role: "Web Application Developer",
   company: "Laravel Specialist",
   summary: "Professional Web Application Developer specializing in high-performance Laravel environments. I leverage my foundational background in IT Administration and Data Center infrastructure to engineer secure, scalable, and operationally resilient digital solutions.",
+||||||| ancestor
+  role: "IT Administrator",
+  company: "Data Center College Of The Philippines",
+  summary: "Dedicated IT Administrator with a robust background in managing data center operations and network infrastructure. Currently ensuring seamless technology delivery at Data Center College of the Philippines. Passionate about system optimization, cybersecurity, and implementing efficient IT solutions that drive educational excellence and organizational growth.",
+=======
+  role: "Web Application Developer",
+  company: "Laravel Specialist",
+  summary: "Focused Web Application Developer specializing in Laravel ecosystems, building robust and scalable backends. My background as an IT Administrator in data centers provides me with a unique technical edge in server optimization, network infrastructure, and system security, ensuring that every application is high-performing and mission-critical ready.",
+>>>>>>> theirs
   socials: {
     github: "https://github.com/yukazakiri",
     linkedin: "https://linkedin.com/in/yukizaki",
