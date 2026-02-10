@@ -8,9 +8,9 @@ const MinimalFooter: React.FC = () => {
       <div className="max-w-7xl mx-auto flex flex-col md:grid md:grid-cols-12 gap-12 items-end">
         <div className="md:col-span-8">
            <h2 className="text-display-giant mb-12 font-display">Let's work<br/><span className="italic font-light">together</span>.</h2>
-           <a href="mailto:hello@yukizaki.dev" className="text-3xl md:text-5xl font-display font-medium underline decoration-1 underline-offset-[12px] hover:text-gray-500 transition-colors">
-              hello@yukizaki.dev
-           </a>
+            <a href="mailto:yukazaki@koamishin.org" className="text-3xl md:text-5xl font-display font-medium underline decoration-1 underline-offset-[12px] hover:text-gray-500 transition-colors">
+               yukazaki@koamishin.org
+            </a>
         </div>
         
         <div className="md:col-span-4 w-full flex flex-col items-start md:items-end gap-12">

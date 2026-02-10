@@ -62,9 +62,9 @@ const MinimalTypoFooter: React.FC = () => {
                 <FiCpu className="animate-pulse" />
                 COMMS_ESTABLISHED
              </div>
-             <a href="mailto:hello@yukizaki.dev" className="text-2xl md:text-4xl font-display font-black text-white hover:text-accent transition-colors duration-500 uppercase tracking-tighter">
-                hello@yukizaki.dev
-             </a>
+              <a href="mailto:yukazaki@koamishin.org" className="text-2xl md:text-4xl font-display font-black text-white hover:text-accent transition-colors duration-500 uppercase tracking-tighter">
+                 yukazaki@koamishin.org
+              </a>
           </div>
 
           <div className="md:col-span-4 space-y-6">

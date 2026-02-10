@@ -9,7 +9,7 @@ interface Props {
 
 const { 
   title, 
-  description = "Personal Portfolio of Yukizaki - IT Administrator",
+  description = "Personal Portfolio of Yukazaki - Web Application Developer at Koamishin.org",
   image = "/og-image.png"
 } = Astro.props;
 
@@ -17,17 +17,17 @@ const {
 const schema = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "Person",
-  "name": "Yukizaki",
+  "name": "Yukazaki",
   "url": "https://yukazakiri.github.io",
   "sameAs": [
     "https://github.com/yukazakiri",
-    "https://linkedin.com/in/yukizaki",
-    "https://twitter.com/yukizaki"
+    "https://linkedin.com/in/yukazaki",
+    "https://twitter.com/yukazaki"
   ],
-  "jobTitle": "IT Administrator",
+  "jobTitle": "Web Application Developer",
   "worksFor": {
     "@type": "Organization",
-    "name": "Data Center College Of The Philippines"
+    "name": "Koamishin.org"
   },
   "description": description
 });
