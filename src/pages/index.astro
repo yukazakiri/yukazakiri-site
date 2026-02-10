@@ -21,7 +21,35 @@ const description = personalDetails.summary;
       <HudHero client:load />
     </div>
     
+<<<<<<< ours
     <HudOverview client:visible />
+||||||| ancestor
+    <div id="about" class="py-40 px-6 md:px-20 border-t border-white/5 relative z-10 bg-[#050505]">
+       <div class="max-w-7xl mx-auto flex flex-col md:grid md:grid-cols-12 gap-12">
+          <div class="md:col-span-4">
+             <h2 class="text-[10px] font-mono font-bold uppercase tracking-[0.4em] text-accent">System_Overview</h2>
+          </div>
+          <div class="md:col-span-8">
+             <p class="text-3xl md:text-5xl font-display font-black leading-tight text-white uppercase tracking-tighter">
+               Dedicated IT Administrator with a robust background in managing data center operations and network infrastructure. Creating high-performance digital architectures with precision and security.
+             </p>
+          </div>
+       </div>
+    </div>
+=======
+    <div id="about" class="py-40 px-6 md:px-20 border-t border-white/5 relative z-10 bg-[#050505]">
+       <div class="max-w-7xl mx-auto flex flex-col md:grid md:grid-cols-12 gap-12">
+          <div class="md:col-span-4">
+             <h2 class="text-[10px] font-mono font-bold uppercase tracking-[0.4em] text-accent">System_Overview</h2>
+          </div>
+          <div class="md:col-span-8">
+             <p class="text-3xl md:text-5xl font-display font-black leading-tight text-white uppercase tracking-tighter">
+               {personalDetails.summary}
+             </p>
+          </div>
+       </div>
+    </div>
+>>>>>>> theirs
 
     <div id="projects">
       <HudProjects client:visible />
