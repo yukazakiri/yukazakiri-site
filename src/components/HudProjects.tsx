@@ -226,6 +226,7 @@ const ProjectAccordionItem = ({ project, index, isOpen, onClick }: { project: an
                                 href={project.link}
                                 target="_blank"
                                 rel="noopener noreferrer"
+                                aria-label={`Launch ${project.title} project`}
                                 className="inline-flex items-center gap-2 px-6 py-3 bg-white text-black font-display font-bold uppercase tracking-wider hover:bg-accent transition-colors"
                             >
                                 Launch_Project <FiArrowUpRight />

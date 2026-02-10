@@ -13,12 +13,14 @@ const {
   image = "/og-image.png"
 } = Astro.props;
 
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
 // JSON-LD Schema
-const schema = JSON.stringify({
+const personSchema = {
   "@context": "https://schema.org",
   "@type": "Person",
   "name": "Yukazaki",
-  "url": "https://yukazakiri.github.io",
+  "url": Astro.site,
   "sameAs": [
     "https://github.com/yukazakiri",
     "https://linkedin.com/in/yukazaki",
@@ -30,24 +32,57 @@ const schema = JSON.stringify({
     "name": "Koamishin.org"
   },
   "description": description
-});
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Yukazaki Portfolio",
+  "url": Astro.site,
+  "description": description
+};
+
+const schema = JSON.stringify([personSchema, websiteSchema]);
 ---
 
 <!doctype html>
 <html lang="en" class="scroll-smooth">
   <head>
+    <!-- Global Metadata -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#050505" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonicalURL} />
     
-    <!-- SEO -->
+    <!-- Primary Meta Tags -->
     <title>{title}</title>
+    <meta name="title" content={title} />
     <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={image} />
-    <meta property="og:type" content="website" />
+    <meta property="og:image" content={new URL(image, Astro.url)} />
+    <meta property="og:site_name" content="Yukazaki Portfolio" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={Astro.url} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={new URL(image, Astro.url)} />
+    <meta property="twitter:site" content="@yukazaki" />
+    <meta property="twitter:creator" content="@yukazaki" />
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     
     <!-- JSON-LD -->
     <script type="application/ld+json" set:html={schema} />
