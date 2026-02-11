@@ -1,0 +1,12 @@
+{
+  "name": "yukazaki-site",
+  "compatibility_date": "2026-02-11",
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS"
+  },
+  "main": "./dist/_worker.js/index.js",
+  "observability": {
+    "enabled": true
+  }
+}
