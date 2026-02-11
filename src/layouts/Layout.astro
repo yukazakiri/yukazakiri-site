@@ -52,6 +52,9 @@ const schema = JSON.stringify([personSchema, websiteSchema]);
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <meta name="generator" content={Astro.generator} />
     <meta name="theme-color" content="#050505" />
 
@@ -80,9 +83,6 @@ const schema = JSON.stringify([personSchema, websiteSchema]);
     <meta property="twitter:image" content={new URL(image, Astro.url)} />
     <meta property="twitter:site" content="@yukazaki" />
     <meta property="twitter:creator" content="@yukazaki" />
-
-    <!-- Favicons -->
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     
     <!-- JSON-LD -->
     <script type="application/ld+json" set:html={schema} />

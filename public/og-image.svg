@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" fill="none">
+    <rect width="1200" height="630" fill="#050505"/>
+    
+    <!-- Grid Pattern -->
+    <defs>
+        <pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse">
+            <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#111111" stroke-width="1"/>
+        </pattern>
+    </defs>
+    <rect width="1200" height="630" fill="url(#grid)" />
+    
+    <!-- Decorative HUD elements -->
+    <path d="M 50 50 L 1150 50" stroke="#00F0FF" stroke-width="1" opacity="0.3" />
+    <path d="M 50 580 L 1150 580" stroke="#00F0FF" stroke-width="1" opacity="0.3" />
+    
+    <!-- Corner Brackets (Large) -->
+    <path d="M40 100V40H100" stroke="#00F0FF" stroke-width="4" />
+    <path d="M1100 40H1160V100" stroke="#00F0FF" stroke-width="4" />
+    <path d="M1160 530V590H1100" stroke="#00F0FF" stroke-width="4" />
+    <path d="M100 590H40V530" stroke="#00F0FF" stroke-width="4" />
+
+    <!-- Logo / Y -->
+    <g transform="translate(850, 165) scale(2.5)">
+        <path d="M10 30V10H30" stroke="#00F0FF" stroke-width="4" stroke-linecap="square"/>
+        <path d="M98 10H118V30" stroke="#00F0FF" stroke-width="4" stroke-linecap="square"/>
+        <path d="M118 98V118H98" stroke="#00F0FF" stroke-width="4" stroke-linecap="square"/>
+        <path d="M30 118H10V98" stroke="#00F0FF" stroke-width="4" stroke-linecap="square"/>
+        <path d="M40 35L64 70L88 35" stroke="#00F0FF" stroke-width="6" stroke-linecap="square" stroke-linejoin="miter"/>
+        <path d="M64 70V100" stroke="#00F0FF" stroke-width="6" stroke-linecap="square"/>
+    </g>
+
+    <!-- Text Content -->
+    <rect x="100" y="200" width="10" height="80" fill="#00F0FF" />
+    <text x="130" y="260" fill="white" font-family="Arial, sans-serif" font-size="80" font-weight="900" style="letter-spacing: 10px;">YUKAZAKI</text>
+    <text x="130" y="320" fill="#00F0FF" font-family="Courier, monospace" font-size="24" style="letter-spacing: 5px;">WEB APPLICATION DEVELOPER</text>
+    
+    <text x="130" y="450" fill="white" opacity="0.5" font-family="Courier, monospace" font-size="14">CORE_SYSTEM: ONLINE</text>
+    <text x="130" y="470" fill="white" opacity="0.5" font-family="Courier, monospace" font-size="14">LOC: 35.6895° N, 139.6917° E</text>
+    <text x="130" y="490" fill="white" opacity="0.5" font-family="Courier, monospace" font-size="14">VER: 2026.02.11</text>
+
+    <!-- Scanning line effect -->
+    <rect x="0" y="315" width="1200" height="1" fill="#00F0FF" opacity="0.1" />
+</svg>
