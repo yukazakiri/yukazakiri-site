@@ -3,33 +3,37 @@
 // This file contains all the static data for the portfolio website.
 
 export const personalDetails = {
-  name: "Yukizaki",
+  name: "Yukazaki",
   role: "Web Application Developer",
-  company: "Laravel Specialist",
-  summary: "Professional Web Application Developer specializing in high-performance Laravel environments. I leverage my foundational background in IT Administration and Data Center infrastructure to engineer secure, scalable, and operationally resilient digital solutions.",
+  company: "Koamishin.org",
+  summary: "Focused Web Application Developer specializing in Laravel ecosystems, building robust and scalable backends at Koamishin.org. My background as an IT Administrator in data centers provides me with a unique technical edge in server optimization, network infrastructure, and system security, ensuring that every application is high-performing and mission-critical ready.",
   socials: {
     github: "https://github.com/yukazakiri",
-    linkedin: "https://linkedin.com/in/yukizaki",
-    twitter: "https://twitter.com/yukizaki",
+    linkedin: "https://linkedin.com/in/yukazaki",
+    twitter: "https://twitter.com/yukazaki",
   },
+  email: "yukazaki@koamishin.org",
 };
 
 export const skills = {
   technical: [
     "PHP / Laravel Framework",
     "MySQL / Eloquent ORM",
-    "RESTful API Architecture",
-    "Vue.js / Alpine.js Integration",
-    "Tailwind CSS / UI Engineering",
-    "Linux Server Management",
-    "Network Infrastructure Security",
+    "RESTful API Development",
+    "Vue.js / Alpine.js",
+    "Tailwind CSS",
+    "Redis / Caching Strategies",
+    "Git / GitHub Actions",
+    "System Security & Hardening",
+    "Network Infrastructure Management",
     "Data Center Operations",
   ],
   soft: [
-    "Technical Leadership",
-    "Analytical Troubleshooting",
-    "Strategic System Design",
-    "Cross-functional Communication",
+    "Analytical Problem Solving",
+    "Technical Documentation",
+    "Strategic Planning",
+    "Agile Methodologies",
+    "Stakeholder Communication",
   ],
 };
 
@@ -42,41 +46,56 @@ export const education = [
   },
 ];
 
-export const experience = [
+export const projects = [
   {
-    role: "Web Application Developer",
-    company: "Laravel Solutions",
-    duration: "2024 - PRESENT",
-    responsibilities: [
-      "Architecting complex backend systems for enterprise Laravel applications.",
-      "Optimizing database performance and implementing advanced caching strategies.",
-      "Developing secure API endpoints and managing high-traffic web traffic loads.",
-    ],
+    title: "KoaScholarships",
+    description: "A specialized scholarship management platform built with Laravel, designed to streamline applications and administrative workflows.",
+    tech: ["Laravel", "MySQL", "Tailwind"],
+    link: "https://github.com/koamishin/KoaScholarships",
   },
   {
-    role: "IT Administrator",
-    company: "Data Center College Of The Philippines",
-    duration: "2022 - 2024",
-    responsibilities: [
-      "Managed mission-critical data center operations and network infrastructure.",
-      "Implemented security hardening protocols for campus-wide server systems.",
-      "Oversaw hardware deployment and systematic network maintenance.",
-    ],
+    title: "Coamifee Shop",
+    description: "An e-commerce solution tailored for boutique digital and physical products, featuring high-performance checkout and inventory management.",
+    tech: ["Laravel", "Vue.js", "Tailwind"],
+    link: "https://github.com/koamishin/coamifee-shop",
+  },
+  {
+    title: "KoamiStarterKit",
+    description: "A production-ready Laravel starter kit optimized for rapid deployment with built-in security, authentication, and UI patterns.",
+    tech: ["Laravel", "PHP", "Alpine.js"],
+    link: "https://github.com/koamishin/KoamiStarterKit",
+  },
+  {
+    title: "Shadcthemes Tools",
+    description: "A collection of utility tools and custom themes for enhancing the Shadcn/UI ecosystem within modern web applications.",
+    tech: ["TypeScript", "React", "Tailwind"],
+    link: "https://github.com/yukazakiri/shadcthemes-tools",
   },
 ];
 
-export const projects = [
+export const experience = [
   {
-    title: "Laravel Enterprise Portal",
-    description: "A comprehensive management system built with Laravel.",
-    tech: ["Laravel", "PostgreSQL", "Tailwind"],
-    link: "https://github.com/yukazakiri",
+    role: "Founder & Lead Developer",
+    company: "Koamishin.org",
+    duration: "2024 - PRESENT",
+    responsibilities: [
+      "Architecting the core identity and digital infrastructure for the Koamishin branding initiative.",
+      "Developing a suite of specialized web applications focused on performance, security, and Laravel excellence.",
+      "Providing high-level technical consultancy for modern web ecosystem deployments and system hardening.",
+      "Engineering custom UI/UX frameworks that bridge the gap between technical complexity and aesthetic minimalism."
+    ],
   },
   {
-    title: "Secure Infra Monitor",
-    description: "Real-time monitoring tool for data center health.",
-    tech: ["PHP", "Bash", "Redis"],
-    link: "https://github.com/yukazakiri",
+    role: "Web Application Developer & IT Administrator",
+    company: "Data Center College Of The Philippines",
+    duration: "2024 - PRESENT",
+    responsibilities: [
+      "Leading the modernization of institutional web systems through the implementation of advanced Laravel architectures.",
+      "Orchestrating mission-critical data center operations, ensuring 99.9% uptime for campus-wide network infrastructure.",
+      "Developing and maintaining secure student information systems, integrating complex database schemas with real-time analytics.",
+      "Automating server-side deployment pipelines and implementing systematic network security audits to protect sensitive academic data.",
+      "Bridging the gap between software development and infrastructure management to streamline operational workflows."
+    ],
   },
 ];
 

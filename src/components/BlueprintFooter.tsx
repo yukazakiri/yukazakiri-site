@@ -34,7 +34,7 @@ const BlueprintFooter: React.FC = () => {
 
             <div className="flex flex-col md:flex-row gap-8 items-start md:items-center">
               <a 
-                href="mailto:hello@yukizaki.dev" 
+                href="mailto:yukazaki@koamishin.org" 
                 className="group flex items-center gap-6 px-8 py-6 border-2 border-white hover:bg-white hover:text-black transition-all duration-300 relative overflow-hidden"
               >
                 <span className="text-2xl md:text-4xl font-display font-bold uppercase z-10">Deploy Message</span>
@@ -99,7 +99,7 @@ const BlueprintFooter: React.FC = () => {
         <div className="mt-32 pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-8 font-mono text-[10px] uppercase tracking-widest text-gray-500">
           <div className="flex items-center gap-4">
             <FiCommand className="text-accent" />
-            <span>&copy; {new Date().getFullYear()} Yukizaki_Core_Identity</span>
+            <span>&copy; {new Date().getFullYear()} Yukazaki_Core_Identity</span>
           </div>
           <div className="flex gap-12">
             <span className="hover:text-white cursor-pointer transition-colors">Privacy_Protocol</span>

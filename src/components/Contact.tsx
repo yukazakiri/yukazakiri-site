@@ -80,7 +80,7 @@ const Contact: React.FC = () => {
                  <div className="p-4 bg-white dark:bg-gray-800 rounded-full shadow-sm group-hover:scale-110 transition-transform">
                    <FiMail className="text-blue-600" />
                  </div>
-                 <span className="group-hover:font-black transition-all duration-300">contact@yukizaki.dev</span>
+                  <span className="group-hover:font-black transition-all duration-300">yukazaki@koamishin.org</span>
                </div>
             </div>
           </div>

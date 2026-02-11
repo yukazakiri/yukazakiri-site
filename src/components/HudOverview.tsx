@@ -1,46 +1,121 @@
-import React, { useRef, useLayoutEffect } from 'react';
+import React, { useRef, useLayoutEffect, useEffect, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { personalDetails } from '../data/portfolio';
-import { FiCode, FiServer, FiArrowRight } from 'react-icons/fi';
+import { FiCpu, FiActivity, FiCornerDownRight } from 'react-icons/fi';
 
 gsap.registerPlugin(ScrollTrigger);
 
+const Interactive3DTitle = ({ text, className }: { text: string, className?: string }) => {
+    const titleRef = useRef<HTMLHeadingElement>(null);
+    const containerRef = useRef<HTMLDivElement>(null);
+
+    useLayoutEffect(() => {
+        const titleEl = titleRef.current;
+        if (!titleEl) return;
+
+        // Split text
+        const chars = text.split('');
+        titleEl.innerHTML = '';
+        chars.forEach((char) => {
+            const span = document.createElement('span');
+            span.textContent = char === ' ' ? '\u00A0' : char;
+            span.style.display = 'inline-block';
+            span.style.transformStyle = 'preserve-3d';
+            titleEl.appendChild(span);
+        });
+
+        const childSpans = titleEl.querySelectorAll('span');
+
+        const ctx = gsap.context(() => {
+            gsap.fromTo(childSpans, 
+                { opacity: 0, rotateX: 90, y: 50, z: -100 },
+                { 
+                    opacity: 1, 
+                    rotateX: 0, 
+                    y: 0, 
+                    z: 0, 
+                    stagger: 0.05, 
+                    duration: 1, 
+                    ease: "back.out(1.7)",
+                    scrollTrigger: {
+                        trigger: titleEl,
+                        start: "top 85%",
+                    }
+                }
+            );
+
+            const onMouseMove = (e: MouseEvent) => {
+                const x = (e.clientX / window.innerWidth) - 0.5;
+                const y = (e.clientY / window.innerHeight) - 0.5;
+
+                childSpans.forEach((span, i) => {
+                    gsap.to(span, {
+                        rotateX: -y * 30,
+                        rotateY: x * 30,
+                        z: Math.abs(x) * 50,
+                        duration: 0.5,
+                        ease: "power2.out"
+                    });
+                });
+            };
+
+            window.addEventListener('mousemove', onMouseMove);
+            return () => window.removeEventListener('mousemove', onMouseMove);
+
+        }, containerRef);
+
+        return () => ctx.revert();
+    }, [text]);
+
+    return (
+        <div ref={containerRef} className={`perspective-container ${className}`}>
+            <h2 ref={titleRef} className="transform-style-3d cursor-default">
+                {text}
+            </h2>
+        </div>
+    );
+};
+
 const HudOverview: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-
+  
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      // 1. Reveal lines with staggered weight shift
-      gsap.from(".typo-reveal-line", {
+      gsap.to(".grid-line-anim", {
+        scaleY: 1,
+        duration: 1.5,
+        ease: "power3.inOut",
         scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top 80%",
-        },
-        y: 100,
-        opacity: 0,
-        rotate: 2,
-        duration: 1.2,
-        stagger: 0.15,
-        ease: "power4.out"
+            trigger: containerRef.current,
+            start: "top 70%",
+        }
       });
 
-      // 2. Continuous Font Weight & Style Manipulation on Scroll
-      gsap.to(".interactive-weight", {
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top bottom",
-          end: "bottom top",
-          scrub: 1
-        },
-        fontWeight: 900,
-        fontStyle: "italic",
-        letterSpacing: "0.1em",
-        color: "#00F0FF"
-      });
+      const summaryText = document.querySelector('.terminal-summary');
+      if (summaryText) {
+          const text = personalDetails.summary;
+          summaryText.textContent = '';
+          
+          ScrollTrigger.create({
+              trigger: containerRef.current,
+              start: "top 60%",
+              onEnter: () => {
+                  let i = 0;
+                  const typeInterval = setInterval(() => {
+                      if (i < text.length) {
+                          summaryText.textContent += text.charAt(i);
+                          i++;
+                      } else {
+                          clearInterval(typeInterval);
+                      }
+                  }, 20); 
+              },
+              once: true
+          });
+      }
 
     }, containerRef);
-
     return () => ctx.revert();
   }, []);
 
@@ -48,82 +123,91 @@ const HudOverview: React.FC = () => {
     <section 
       ref={containerRef} 
       id="about" 
-      className="py-60 px-6 md:px-20 bg-[#050505] relative overflow-hidden border-t border-white/5"
+      className="min-h-screen py-32 px-6 md:px-12 bg-[#050505] relative overflow-hidden flex flex-col justify-center"
     >
-      {/* Background Decor: 3D Grid Overlay */}
-      <div className="absolute inset-0 opacity-[0.02] pointer-events-none bg-[size:60px_60px] bg-[linear-gradient(to_right,#fff_1px,transparent_1px),linear-gradient(to_bottom,#fff_1px,transparent_1px)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:100px_100%] pointer-events-none" />
+      <div className="absolute top-0 left-1/4 w-px h-full bg-accent/20 grid-line-anim scale-y-0 origin-top" />
+      <div className="absolute top-0 right-1/4 w-px h-full bg-accent/20 grid-line-anim scale-y-0 origin-bottom" />
 
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="max-w-[1600px] mx-auto w-full relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-16">
         
-        {/* Typographic Core Section */}
-        <div className="mb-32 max-w-5xl">
-          <div className="flex items-center gap-4 mb-12 typo-reveal-line">
-             <span className="font-mono text-xs text-accent tracking-[0.6em] uppercase">Transition_Manifesto</span>
-             <div className="h-[1px] flex-1 bg-white/10" />
-          </div>
-          
-          <h2 className="interactive-weight text-4xl md:text-7xl font-display font-light text-white leading-[0.9] uppercase tracking-tighter">
-            Architecting <span className="font-black italic text-accent">Resilient</span> Solutions <br />
-            From <span className="stroke-text-white font-black">Core</span> To <span className="font-black underline decoration-accent">Interface</span>
-          </h2>
-          
-          <p className="typo-reveal-line mt-16 text-2xl md:text-4xl font-body font-light text-gray-400 leading-tight max-w-4xl">
-            {personalDetails.summary}
-          </p>
+        <div className="lg:col-span-7 flex flex-col justify-center">
+            <div className="mb-8 flex items-center gap-4 text-accent font-mono text-xs tracking-widest">
+                <FiActivity className="animate-pulse" />
+                [ SYSTEM_CORE_SUMMARY ]
+            </div>
+            
+            <div className="space-y-4">
+                <Interactive3DTitle 
+                    text="DECODING" 
+                    className="text-7xl md:text-9xl font-display font-black text-white leading-[0.85] tracking-tighter" 
+                />
+                <Interactive3DTitle 
+                    text="COMPLEXITY" 
+                    className="text-7xl md:text-9xl font-display font-black text-transparent stroke-text-white leading-[0.85] tracking-tighter" 
+                />
+                <div className="flex items-center gap-4">
+                    <div className="h-2 w-24 bg-accent" />
+                    <Interactive3DTitle 
+                        text="INTO_PERFORMANCE" 
+                        className="text-4xl md:text-6xl font-display font-bold text-white leading-none tracking-tight mix-blend-difference" 
+                    />
+                </div>
+            </div>
         </div>
 
-        {/* Binary Identity Grid (Visualizing the Role Split) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/10 border border-white/10 typo-reveal-line">
-          
-          {/* Identity A: Infrastructure */}
-          <div className="bg-[#080808] p-12 hover:bg-black transition-colors group">
-             <div className="flex justify-between items-start mb-12">
-                <div className="p-4 border border-white/10 text-gray-500 group-hover:text-white transition-colors">
-                   <FiServer size={32} />
+        <div className="lg:col-span-5 flex flex-col justify-end">
+            <div className="bg-[#0A0A0A] border border-white/10 p-8 relative group hover:border-accent/50 transition-colors duration-500">
+                
+                <div className="flex justify-between items-center mb-6 border-b border-white/10 pb-4">
+                    <div className="flex gap-2">
+                        <div className="w-3 h-3 rounded-full bg-red-500/20" />
+                        <div className="w-3 h-3 rounded-full bg-yellow-500/20" />
+                        <div className="w-3 h-3 rounded-full bg-green-500/20" />
+                    </div>
+                    <span className="font-mono text-[10px] text-gray-500">
+                        usr/bin/yukazaki_bio.exe
+                    </span>
                 </div>
-                <span className="font-mono text-[10px] text-gray-600 uppercase">Module_01 / Admin</span>
-             </div>
-             <h3 className="text-3xl font-display font-black text-white mb-6 uppercase">Infrastructure_Root</h3>
-             <p className="font-mono text-sm text-gray-500 leading-relaxed">
-               Hardened experience in Data Center management, network security protocols, and mission-critical server stability.
-             </p>
-          </div>
 
-          {/* Identity B: Developer */}
-          <div className="bg-[#080808] p-12 hover:bg-[#00F0FF]/5 transition-colors group">
-             <div className="flex justify-between items-start mb-12">
-                <div className="p-4 border border-accent/20 text-accent group-hover:scale-110 transition-transform">
-                   <FiCode size={32} />
+                <div className="font-mono text-sm md:text-base text-gray-400 leading-relaxed min-h-[200px]">
+                    <span className="text-accent mr-2">root@system:~$</span>
+                    <span className="terminal-summary text-white">
+                    </span>
+                    <span className="inline-block w-2 h-4 bg-accent ml-1 animate-pulse" />
                 </div>
-                <span className="font-mono text-[10px] text-accent uppercase">Module_02 / Web_App</span>
-             </div>
-             <h3 className="text-3xl font-display font-black text-white mb-6 uppercase">Laravel_Specialist</h3>
-             <p className="font-mono text-sm text-gray-500 leading-relaxed group-hover:text-gray-300 transition-colors">
-               Specializing in high-performance application development, scalable architectures, and elegant technical problem-solving.
-             </p>
-          </div>
 
-        </div>
+                <div className="mt-8 grid grid-cols-2 gap-4 border-t border-white/10 pt-6">
+                    <div>
+                        <span className="block font-mono text-[10px] text-gray-600 uppercase tracking-widest mb-1">Current_Role</span>
+                        <div className="text-white font-bold flex items-center gap-2">
+                            <FiCornerDownRight className="text-accent" /> {personalDetails.role}
+                        </div>
+                    </div>
+                    <div>
+                        <span className="block font-mono text-[10px] text-gray-600 uppercase tracking-widest mb-1">System_Auth</span>
+                        <div className="text-accent font-bold flex items-center gap-2">
+                            <FiCpu /> ADMIN_ACCESS_GRANTED
+                        </div>
+                    </div>
+                </div>
 
-        {/* Transition Arrow Decor */}
-        <div className="mt-20 flex justify-center typo-reveal-line">
-           <div className="flex items-center gap-8 text-white/20 font-mono text-[10px] uppercase tracking-widest">
-              <span>Infra_Foundation</span>
-              <FiArrowRight className="text-accent animate-pulse" />
-              <span className="text-accent font-bold">App_Excellence</span>
-           </div>
+                <div className="absolute top-0 right-0 w-4 h-4 border-t border-r border-accent opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="absolute bottom-0 left-0 w-4 h-4 border-b border-l border-accent opacity-0 group-hover:opacity-100 transition-opacity" />
+            </div>
         </div>
 
       </div>
 
       <style>{`
         .stroke-text-white {
-          -webkit-text-stroke: 1px rgba(255,255,255,0.4);
-          color: transparent;
+          -webkit-text-stroke: 1px rgba(255, 255, 255, 0.8);
         }
-        .stroke-text-white:hover {
-          color: white;
-          -webkit-text-stroke: 0px;
+        .perspective-container {
+            perspective: 1000px;
+        }
+        .transform-style-3d {
+            transform-style: preserve-3d;
         }
       `}</style>
     </section>

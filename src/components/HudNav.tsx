@@ -66,6 +66,8 @@ const HudNav: React.FC = () => {
           <button
             className="md:hidden p-2 border border-white/30 hover:bg-white hover:text-black transition-colors"
             onClick={() => setIsOpen(!isOpen)}
+            aria-label={isOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isOpen}
           >
             {isOpen ? <FiX size={20} /> : <FiMenu size={20} />}
           </button>

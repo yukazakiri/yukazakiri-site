@@ -1,7 +1,7 @@
 import React, { useRef, useLayoutEffect } from 'react';
 import gsap from 'gsap';
 import { personalDetails } from '../data/portfolio';
-import { FiArrowDown, FiCpu, FiGrid } from 'react-icons/fi';
+import { FiCpu, FiGrid } from 'react-icons/fi';
 
 const HudHero: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);

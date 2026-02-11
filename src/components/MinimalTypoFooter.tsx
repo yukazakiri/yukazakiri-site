@@ -62,9 +62,9 @@ const MinimalTypoFooter: React.FC = () => {
                 <FiCpu className="animate-pulse" />
                 COMMS_ESTABLISHED
              </div>
-             <a href="mailto:hello@yukizaki.dev" className="text-2xl md:text-4xl font-display font-black text-white hover:text-accent transition-colors duration-500 uppercase tracking-tighter">
-                hello@yukizaki.dev
-             </a>
+              <a href="mailto:yukazaki@koamishin.org" className="text-2xl md:text-4xl font-display font-black text-white hover:text-accent transition-colors duration-500 uppercase tracking-tighter">
+                 yukazaki@koamishin.org
+              </a>
           </div>
 
           <div className="md:col-span-4 space-y-6">
@@ -83,7 +83,14 @@ const MinimalTypoFooter: React.FC = () => {
              <span className="font-mono text-[10px] text-gray-500 tracking-[0.4em] uppercase">UPLINK_CHANNELS</span>
              <div className="flex gap-6 md:justify-end">
                {Object.entries(personalDetails.socials).map(([key, url]) => (
-                 <a key={key} href={url} target="_blank" className="p-3 border border-white/10 text-gray-400 hover:text-accent hover:border-accent transition-all duration-300">
+                 <a 
+                   key={key} 
+                   href={url} 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   aria-label={`Visit my ${key}`}
+                   className="p-3 border border-white/10 text-gray-400 hover:text-accent hover:border-accent transition-all duration-300"
+                 >
                    {key === 'github' ? <FiGithub size={20} /> : key === 'linkedin' ? <FiLinkedin size={20} /> : <FiTwitter size={20} />}
                  </a>
                ))}
